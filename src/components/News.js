@@ -5,15 +5,19 @@ import PropTypes from 'prop-types'
 
 
 export class News extends Component {
+
   static defaultProps = {
     country: 'us',
     pageSize: 8,
+    category: 'General'
 
   }
   static propTypes = {
     country: PropTypes.string,
     pageSize: PropTypes.number,
+    category: PropTypes.string
   }
+
   constructor() {
     super();
     this.state = {
@@ -24,7 +28,7 @@ export class News extends Component {
   }
 
   async componentDidMount() {
-    let url = `https://newsapi.org/v2/top-headlines?country = ${this.props.country}&apiKey=b587285e0408458abe7a87dec021e48d&page=1&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=b587285e0408458abe7a87dec021e48d&page=1&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -38,7 +42,7 @@ export class News extends Component {
   handleNextClick = async () => {
     if (!(this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize))) {
      
-      let url = `https://newsapi.org/v2/top-headlines?country = ${this.props.country}&apiKey=b587285e0408458abe7a87dec021e48d&page=${
+      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=b587285e0408458abe7a87dec021e48d&page=${
         this.state.page + 1
       }&pageSize=${this.props.pageSize}`;
       this.setState({ loading: true });
@@ -53,7 +57,7 @@ export class News extends Component {
 };
 
   handlePreviousClick = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country = ${this.props.country}&apiKey=b587285e0408458abe7a87dec021e48d&page=${
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=b587285e0408458abe7a87dec021e48d&page=${
       this.state.page - 1
     }&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
