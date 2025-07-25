@@ -7,16 +7,13 @@ import News from "./components/News";
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <>
         
         <Navbar />
-        <div className="container">
-          <h1>Welcome to the App</h1>
-          <p>This is a simple React application with a Navbar component.</p>
-          <News/>
-        </div>
         
-      </div>
+          <News/>
+        
+      </>
     );
   }
 }
