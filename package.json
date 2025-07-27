@@ -2,7 +2,6 @@
   "name": "newsapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://newsmonkey-l.netlify.app",
   "author": "Lakshya Limba",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
