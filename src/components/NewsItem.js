@@ -1,4 +1,3 @@
-
 const NewsItem = (props) => {
   let { title, description, imageUrl, newsurl, author, date, source } = props;
   return (
